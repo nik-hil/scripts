@@ -6,6 +6,20 @@ A pallindrome might exists in space between two characters e.g, "bb"
 
 
 def palindrome(string):
+    '''test cases
+    >>> palindrome("")
+    
+    >>> palindrome("a")
+    'a'
+    >>> palindrome("ab")
+    'a'
+    >>> palindrome("bb")
+    'bb'
+    >>> palindrome("abcba")
+    'abcba'
+    >>> palindrome("efabcbad")
+    'abcba'
+    '''
     if not string:
         return None
     max_range = ()
@@ -43,9 +57,6 @@ def find_palindrome_range(low, high, string, len_str):
         high += 1
     return low, high
 
-print palindrome("")
-print palindrome("a")
-print palindrome("ab")
-print palindrome("bb")
-print palindrome("abcba")
-print palindrome("efabcba")
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
