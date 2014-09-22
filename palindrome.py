@@ -3,6 +3,8 @@ center of pallindrome. From center it probes in both direction this pallindrome
 exists.
 A pallindrome might exists in space between two characters e.g, "bb"
 '''
+
+
 def palindrome(string):
     if not string:
         return None
