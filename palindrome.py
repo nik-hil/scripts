@@ -9,31 +9,23 @@ def palindrome(string):
     max_range = ()
     max_length = 0
     for i in range(len(string)):
-        current_range = find_pallindrome(i, string)
+        current_range = find_palindrome(i, string)
         new_length = current_range[1] - current_range[0] + 1
         if max_length < new_length :
             max_length = new_length
             max_range = current_range
     return string[max_range[0]:max_range[1] + 1]
         
-def find_pallindrome(i, string):
+def find_palindrome(i, string):
     len_str = len(string)
     len_first = 0
     len_second = 0
-    low = i
-    high = i
-    while (low > -1 and high < len_str and string[low] == string[high]):
-        low -= 1
-        high += 1
+    low, high = find_palindrome_range(i, i, string, len_str)
     if low == i and high == i:
         len_first = (low, high)
     else:
         len_first = (low + 1, high - 1)
-    low = i
-    high = i + 1
-    while(low > -1 and high < len_str and string[low] == string[high]):
-        low -= 1
-        high += 1
+    low, high = find_palindrome_range(i, i+1, string, len_str)
     if low == i and high == i + 1:
         len_second = (low, high - 1)
     else:
@@ -42,6 +34,12 @@ def find_pallindrome(i, string):
         return len_first
     else:
         return len_second
+
+def find_palindrome_range(low, high, string, len_str):
+    while (low > -1 and high < len_str and string[low] == string[high]):
+        low -= 1
+        high += 1
+    return low, high
 
 print palindrome("")
 print palindrome("a")
